@@ -263,6 +263,27 @@ void loop() {
     mqttClient.publish(mqttTopic.c_str(), Adresse.c_str());
   }
   mqttClient.loop();
+  //WiFi Signalstärke
+  mqttTopic = MQTT_SERIAL_PUBLISH_STATUS;
+  mqttTopic += "WiFi_Signal_Strength";
+  mqttPayload = WiFi.RSSI();
+  mqttClient.publish(mqttTopic.c_str(), mqttPayload.c_str());
+  if (debug > 2) Serial.print("WiFi Signalstärke: ");
+  if (debug > 2) Serial.println(mqttPayload);
+  //WiFi IP-Adresse
+  mqttTopic = MQTT_SERIAL_PUBLISH_STATUS;
+  mqttTopic += "WiFi_IP_Adress";
+  mqttPayload = WiFi.localIP().toString();
+  mqttClient.publish(mqttTopic.c_str(), mqttPayload.c_str());
+  if (debug > 2) Serial.print("WiFi IP-Adresse: ");
+  if (debug > 2) Serial.println(mqttPayload);
+  //WiFi MAC-Adresse
+  mqttTopic = MQTT_SERIAL_PUBLISH_STATUS;
+  mqttTopic += "WiFi_MAC_Adress";
+  mqttPayload = WiFi.macAddress();
+  mqttClient.publish(mqttTopic.c_str(), mqttPayload.c_str());
+  if (debug > 2) Serial.print("WiFi MAC-Adresse: ");
+  if (debug > 2) Serial.println(mqttPayload);
   // DHT22 Sensorauswertung
   if (debug) Serial.println("\nAnfrage des Feuchte- & Temperatursensors DHT22... ");
   float h = dht.readHumidity();
