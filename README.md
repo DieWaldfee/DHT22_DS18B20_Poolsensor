@@ -18,4 +18,4 @@ esp_task_wdt.h:________Espressif IDE<br>
 
 ### Board ESP32
 esp32 by Espressif Systems v1.0.6 (über Arduino IDE)<br>
-Getestet habe ich auch v2.0.5 - das Projekt wird auch mit neueren Versionen des Boards funktionieren.<br>
+Getestet habe ich auch v2.0.5<br>
